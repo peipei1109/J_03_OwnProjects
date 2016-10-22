@@ -1,6 +1,6 @@
 package com.interview;
 
-import java.awt.print.Printable;
+import java.util.Base64;
 
 public class TransJinZhi{
 	public static void main(String[] args) 
@@ -11,7 +11,9 @@ public class TransJinZhi{
 		trans1.toba(60);
 		trans1.toBin(60);
 		
-		new TenTo36().trans (18,17);
+		TenTo36 tens=new TenTo36();
+		tens.trans (18,17);
+		tens.reverseTo10("11",16.0);
     }
 }
 
@@ -122,6 +124,37 @@ class TenTo36{
                 System.out.print(arr[x]);    
             }
         }
+    }
+    
+    
+    public static void reverseTo10(String sNum,double base){
+//      定义一个数组，角标对应数值，可以看做一个查询表。
+      char[] chs = {'0' , '1' , '2' , '3' , '4' , '5' ,
+      		  '6' , '7' , '8' , '9' , 'a' , 'b' ,
+      		  'c' , 'd' , 'e' , 'f' , 'g' , 'h' ,
+      		  'i' , 'j' , 'k' , 'l' , 'm' , 'n' ,
+      		  'o' , 'p' , 'q' , 'r' , 's' , 't' ,
+      		  'u' , 'v' , 'w' , 'x' , 'y' , 'z'};
+      
+      
+      char[] arr = new char[32];
+      
+      int res=0;
+      for (int i=0;i<sNum.length();i++){
+    	  for(int j=0;j<chs.length;j++)
+    	  {
+    		  if(sNum.charAt(i)==chs[j]){
+    			  res +=j*Math.pow(base,sNum.length()-1-i);
+    			  
+    		  }
+    	  }
+    	  
+      }
+      
+      System.out.println(res);
+     
+      
+    	
     }
 	
 }
