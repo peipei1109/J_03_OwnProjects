@@ -9,6 +9,7 @@ public class TransJinZhi
         toHex(60);
         toba(60);
         toBin(60);
+        trans (17,17,5);
     }
 
 //十进制转二进制
